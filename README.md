@@ -53,6 +53,14 @@ In the API you have three functions:
   var val = config.getConfigByKey('key');
   ```
 
+You can configure the configuration file Uri by using the setConfigUri function when you configure your module.
+  ```js
+  var app = angular.module('app', ['ngConfig']);
+  app.config(['configProvider', function (configProvider) {
+    configProvider.setConfigUri('config/yourFileName.json');
+  }]);
+  ```
+
 An example of a configuration file:
 ```js
 {

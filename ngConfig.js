@@ -1,12 +1,14 @@
 (function (angular) {
     'use strict';
 
-    function configurationService($http) {
+    var mod = angular.module('ngConfig', []);
+
+    function ConfigurationService($http, configUri) {
         var configurationObject;
 
         function init() {
             configurationObject = {};
-            return $http.get('config/config.json').then(function (response) {
+            return $http.get(configUri).then(function (response) {
                 configurationObject = response.data;
             });
         }
@@ -26,7 +28,17 @@
         };
     }
 
-    angular.module('ngConfig').factory('config', configurationService);
+    function configurationProvider() {
+        var configUri = 'config/config.json';
 
-    configurationService.$inject = ['$http'];
+        this.setConfigUri = function(value) {
+            configUri = value;
+        };
+
+        this.$get = ['$http', function($http) {
+            return new ConfigurationService($http, configUri);
+        }];
+    }
+
+    mod.provider('config', configurationProvider);
 }(window.angular));
