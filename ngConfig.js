@@ -28,7 +28,7 @@
         };
     }
 
-    function configurationProvider() {
+    function ConfigurationProvider() {
         var configUri = 'config/config.json';
 
         this.setConfigUri = function(value) {
@@ -40,5 +40,5 @@
         }];
     }
 
-    mod.provider('config', configurationProvider);
+    mod.provider('config', ConfigurationProvider);
 }(window.angular));
