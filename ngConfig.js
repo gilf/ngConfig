@@ -17,6 +17,10 @@
             return configurationObject[key];
         }
 
+        function setConfigOfKey(key, value) {
+            configurationObject[key] = value;
+        }
+
         function isInitialized() {
             return !angular.isUndefined(configurationObject);
         }
@@ -24,7 +28,8 @@
         return {
             init: init,
             isInitialized: isInitialized,
-            getConfigByKey: getConfigByKey
+            getConfigByKey: getConfigByKey,
+            setConfigOfKey: setConfigOfKey
         };
     }
 

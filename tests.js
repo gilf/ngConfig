@@ -44,5 +44,17 @@ describe('module ngConfig', function () {
 
             $http.flush();
         });
+
+        it('setConfigOfKey should set the value for the given key', function() {
+            configSvr.init().then(function() {
+                expect(configSvr.getConfigByKey('config3')).toBe('config3');
+
+                configSvr.setConfigOfKey('config3', 'newValue');
+
+                expect(configSvr.getConfigByKey('config3')).toBe('newValue');
+            });
+
+            $http.flush();
+        });
     });
 });

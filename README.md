@@ -53,6 +53,13 @@ In the API you have three functions:
   var val = config.getConfigByKey('key');
   ```
 
+* setConfigOfKey(key, value): sets the configuration of the supplied key to new configuration.
+  When you set the key only the in-memory object is updated (the value isn't saved to the configuration file).
+  ```js
+  config.setConfigOfKey('key', 'value');
+  ```
+
+
 You can configure the configuration file Uri by using the setConfigUri function when you configure your module.
   ```js
   var app = angular.module('app', ['ngConfig']);
